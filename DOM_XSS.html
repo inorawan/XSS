@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-based XSS Example</title>
+</head>
+<body>
+    <h1>DOM-based XSS Example</h1>
+    <input type="text" id="userInput" placeholder="Enter your name">
+    <button onclick="greetUser()">Greet</button>
+    <div id="greeting"></div>
+
+    <script>
+        function greetUser() {
+            var userName = document.getElementById('userInput').value;
+            document.getElementById('greeting').textContent = 'Hello, ' + userName + '!';
+        }
+
+        // Retrieve and execute code from the URL fragment
+        var fragment = window.location.hash.substr(1); // Get the fragment part of the URL without the #
+        if (fragment) {
+            eval(fragment); // Execute the code
+        }
+    </script>
+</body>
+</html>
+
+
